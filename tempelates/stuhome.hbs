@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+
+    
+    <a href="/stuhome">Home</a>
+    <a href="/profile">Profile</a>
+    <a href="/stuattendy">Attendance</a>
+    <a href="/logout">Log Out</a>
+    
+    
+    
+    <p>Time:<span id="time"></span></p>
+
+    <script>
+      function displayTime() {
+        var date = new Date();
+        var time = date.toLocaleTimeString();
+        document.getElementById("time").textContent = time;
+      }
+
+      setInterval(displayTime, 1000);
+    </script>
+    <h1>Chennai Weather</h1>
+	<p><span id="temperature"></span> &#8451;</p>
+	<p>Feels like <span id="feels-like"></span> &#8451;</p>
+	<p>Humidity is <span id="humidity"></span>%</p>
+
+	<script>
+		fetch('https://api.openweathermap.org/data/2.5/weather?q=Chennai&appid=22bbae8c14bec306cd4887fc2ec67491&units=metric')
+			.then(response => response.json())
+			.then(data => {
+				document.getElementById('temperature').textContent = data.main.temp;
+				document.getElementById('feels-like').textContent = data.main.feels_like;
+				document.getElementById('humidity').textContent = data.main.humidity;
+			})
+			.catch(error => console.error(error));
+	</script>
+    <h3>Hello {{student.name}}</h3>
+  <div id="stu">
+    {{{stu}}}
+    </div>
+    <script scr="index.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <a href="/home">Home</a>
+    <a href="/logout">Log Out</a>
+        
+</head>
+<body>
+    
+<h1>Student Details</h1>
+
+    
+        <form action="/addstudetails" method="post" >
+        <label for="name">Name</label>
+        <input placeholder="Name" name="name" type="text">
+        <br>
+        
+        <label for="regno">Registration No</label>
+        <input placeholder="Registration No" name="regno" type="text">
+        <br>
+        <label for="phno">Phone No</label>
+        <input placeholder="Phone No" name="phno" type="text">
+        <br>
+        <label for="email">Email</label>
+        <input placeholder="Email" name="email" type="text">
+        <br>
+        <label for="parentname">Parents Name:</label>
+        <input placeholder="Parent Name" name="parentname" type="text">
+        <br>
+        <label for="parentphno">Parent Ph No</label>
+        <input placeholder="Parent Ph No" name="parentphno" type="text">
+        <br>
+        <label for="roomno">Room No</label>
+        <input placeholder="Room No" name="roomno" type="number">
+        <br>
+
+        <input class="sub" type="submit">
+        </form>
+
+ <h1>Search for Student</h1>
+<form action="/search" method="post">
+        <label for="regno">Enter Student Registration Number:</label>
+        <input type="text" id="regno" name="regno" required>
+        <br>
+        <button type="submit">Search</button>
+</form>
+<div id="resultDiv"></div>
+<script src="index.js"></script>
+ 
+<div id="stu">
+    {{{stu}}}
+</div>
+<h2 id="mess">
+    {{mess}}
+</h2>
+
+
+
+
+</body>
+</html> 
+
