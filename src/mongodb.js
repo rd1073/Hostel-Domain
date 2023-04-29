@@ -52,24 +52,28 @@ const stuDetailsSchema = new mongoose.Schema({
 });
 
 
-const attendySchema = new mongoose.Schema({
+ 
+
+
+const staffDetSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
-  regno: {
-    type: String,
+  floor: {
+    type: Number,
     required: true
   },
-  date:{
-    required: true,
-    type: Date 
+  phno:{
+    type:Number,
+    required: true
   }
+  
 });
 
 const Collection1 = conn.model('Collection1', logInSchema);
 const Collection2 = conn.model('Collection2', stuDetailsSchema);
-const Collection3 = conn.model('Collection3', attendySchema);
+const Collection3 = conn.model('Collection3', staffDetSchema);
 
 
 module.exports = {

@@ -25,7 +25,9 @@ app.get('/signup', (req, res) => {
     res.render('signup')
 })
 
- 
+app.get('/staffdetails', (req, res) => {
+    res.render('staffdetails')
+})
  
 
 app.get('/studentdetailss', (req, res) => {
@@ -61,7 +63,7 @@ app.post('/signup', async (req, res) => {
     res.render("home")
 })
  
-
+ 
 app.post('/login', async (req, res) => {
     try{
         const check=await Collection1.findOne({name:req.body.name})
@@ -122,6 +124,7 @@ app.post('/addstudetails', async (req, res) => {
     
     
 })
+
 
 
 
