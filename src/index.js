@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const session = require('express-session');
 
-const { Collection1, Collection2, Collection3 } = require("./mongodb");
+const { Collection1, Collection2} = require("./mongodb");
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -189,10 +189,52 @@ app.post('/search', (req, res) => {
   });
     
    
+  app.post('/addstaffdetails', async (req, res) => {
+    
+    const data = {
+        name: req.body.name,
+        password: req.body.password,
+        floor: req.body.floor,
+        phno: req.body.phno
+    } 
+     
+    
 
+    await Collection1.insertMany([data])
+    
+    res.render('home');
+    
+})
   
 
- 
+app.post('/searchstaff', (req, res) => {
+    const name = req.body.name;
+     
+    Collection1.find({ name: name })
+        .then(staff => {
+            if (!staff) {
+                console.log('Staff not found');
+                res.render('staffdetails',{messs:'Staff not found'})
+            } else {
+                console.log(staff);
+                //res.send(staff)
+                //res.send('staffdetails', {st:`<h3>Name: ${staff.name}</h3><h3>Floor :${staff.floor}</h3><h3>Phone No: ${staff.phno}</h3>`})
+                res.render('staffdetails', {staff: staff})
+
+                
+                 
+            }
+        })  
+        .catch(err => {
+            console.log(err);
+            res.send('Error searching for student');
+        });
+}); 
+
+
+
+
+
 app.listen(3000, () => {
     console.log('port connected');
 })

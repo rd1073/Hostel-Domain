@@ -30,6 +30,24 @@
         <input class="sub" type="submit">
         </form>
 
+        <h1>Search for Staff</h1>
+        <form action="/searchstaff" method="post">
+        <label for="staffname">Staff Name:</label>
+        <input type="text" id="staffname" name="staffname">
+        <br>
+        <button type="submit">Search</button>
+</form>
+<h2 id="messs">
+    {{messs}}
+</h2>
+<div id="st">
+    {{{st}}}
+</div>
+        {{#if staff}}
+    <h3>Name: {{staff.name}}</h3>
+    <h3>Floor: {{staff.floor}}</h3>
+    <h3>Phone No: {{staff.phno}}</h3>
+{{/if}}
   
 </form>
 </body>

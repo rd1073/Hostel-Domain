@@ -16,6 +16,14 @@ const logInSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  floor: {
+    type: Number,
+    required: true
+  },
+  phno:{
+    type:Number,
+    required: true
   }
 });
 
@@ -54,30 +62,14 @@ const stuDetailsSchema = new mongoose.Schema({
 
  
 
-
-const staffDetSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  floor: {
-    type: Number,
-    required: true
-  },
-  phno:{
-    type:Number,
-    required: true
-  }
-  
-});
+ 
 
 const Collection1 = conn.model('Collection1', logInSchema);
 const Collection2 = conn.model('Collection2', stuDetailsSchema);
-const Collection3 = conn.model('Collection3', staffDetSchema);
+
 
 
 module.exports = {
   Collection1,
-  Collection2,
-  Collection3
+  Collection2
 };
