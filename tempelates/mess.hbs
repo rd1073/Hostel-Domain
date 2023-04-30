@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mess</title>
+</head>
+<body>
+    <a href="/stuhome">Home</a>
+    <a href="/profile">Profile</a>
+    <a href="/stustaff">Staff</a>
+    <a href="/mess">Mess</a>
+    <a href="/logout">Log Out</a>
+
+    
+	<h1>Select Day:</h1>
+	<select id="messmenu">
+		<option value="monday">Monday</option>
+		<option value="tuesday">Tuesday</option>
+		<option value="wednesday">Wednesday</option>
+		<option value="thursday">Thursday</option>
+        <option value="friday">Friday</option>
+        <option value="saturday">Saturday</option>
+        <option value="sunday">Sunday</option>
+	</select>
+
+	<p id="result"></p>
+
+	<script>
+		// Get the dropdown menu and the result paragraph
+		const dropdown = document.getElementById('messmenu');
+		const result = document.getElementById('result');
+
+		// Listen for changes to the dropdown menu
+		dropdown.addEventListener('change', () => {
+			// Get the selected option
+			const selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+			// Display the corresponding text in the result paragraph
+			if (selectedOption === 'monday') {
+				result.innerText = 'Apple salad';
+			} else if (selectedOption === 'tuesday') {
+				result.innerText = 'banana salad';
+			} else if (selectedOption === 'wednesday') {
+				result.innerText = 'orange alad';
+			} else if (selectedOption === 'thursday') {
+				result.innerText = 'mango salad';
+			}
+            else if (selectedOption === 'friday') {
+				result.innerText = 'dal salad';
+			}
+            else if (selectedOption === 'saturday') {
+				result.innerText = 'chapati salad';
+			}
+            else if (selectedOption === 'sunday') {
+				result.innerText = 'pizza  salad';
+			}
+            
+
+		});
+	</script>
+
+</body>
+</html>

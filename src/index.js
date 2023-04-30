@@ -34,6 +34,10 @@ app.get('/staffdetails', (req, res) => {
     res.render('staffdetails')
 })
 
+app.get('/mess', (req, res) => {
+    res.render('mess')
+})
+
 app.get('/stustaff', (req, res) => {
     res.render('stusearchstaff')
 })
