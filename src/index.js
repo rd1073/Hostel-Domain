@@ -21,6 +21,13 @@ app.get('/', (req, res) => {
     res.render('login')
 })
 
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true
+  }));
+
+
 app.get('/signup', (req, res) => {
     res.render('signup')
 })
@@ -46,9 +53,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/studentdetails.html');
   });
   
-app.get('/home', (req, res) => {
-    res.render('home')
- })
+
   
 
 app.post('/signup', async (req, res) => {
@@ -67,6 +72,8 @@ app.post('/signup', async (req, res) => {
 app.post('/login', async (req, res) => {
     try{
         const check=await Collection1.findOne({name:req.body.name})
+        req.session.check = check.name;
+
         if(check.password===req.body.password){
             res.render("home",{stu:`<h1>Hello ${check.name}</h1>`})
         }
@@ -78,12 +85,11 @@ app.post('/login', async (req, res) => {
         res.send("Login not working, kindly try again")
     }
 })
-
-app.use(session({
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: true
-  }));
+ 
+app.get('/home', async(req, res) => {
+    
+    res.render("home")
+ }) 
 
 app.post('/stulogin', async (req, res) => {
     try{
@@ -202,7 +208,7 @@ app.post('/search', (req, res) => {
 
     await Collection1.insertMany([data])
     
-    res.render('home');
+    res.render('staffdetails');
     
 })
   
