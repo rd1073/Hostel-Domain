@@ -208,9 +208,9 @@ app.post('/search', (req, res) => {
   
 
 app.post('/searchstaff', (req, res) => {
-    const name = req.body.name;
+    const floor = req.body.floor;
      
-    Collection1.find({ name: name })
+    Collection1.findOne({ floor: floor })
         .then(staff => {
             if (!staff) {
                 console.log('Staff not found');
@@ -220,9 +220,7 @@ app.post('/searchstaff', (req, res) => {
                 //res.send(staff)
                 //res.send('staffdetails', {st:`<h3>Name: ${staff.name}</h3><h3>Floor :${staff.floor}</h3><h3>Phone No: ${staff.phno}</h3>`})
                 res.render('staffdetails', {staff: staff})
-
-                
-                 
+         
             }
         })  
         .catch(err => {
