@@ -28,12 +28,14 @@ app.use(session({
   }));
 
 
-app.get('/signup', (req, res) => {
-    res.render('signup')
-})
+
 
 app.get('/staffdetails', (req, res) => {
     res.render('staffdetails')
+})
+
+app.get('/stustaff', (req, res) => {
+    res.render('stusearchstaff')
 })
  
 
@@ -88,7 +90,7 @@ app.post('/login', async (req, res) => {
  
 app.get('/home', async(req, res) => {
     
-    res.render("home")
+    res.render('home', { check: req.session.check });
  }) 
 
 app.post('/stulogin', async (req, res) => {
@@ -235,7 +237,27 @@ app.post('/searchstaff', (req, res) => {
         });
 }); 
 
-
+app.post('/stustaff', (req, res) => {
+    const floor = req.body.floor;
+     
+    Collection1.findOne({ floor: floor })
+        .then(staff => {
+            if (!staff) {
+                console.log('Staff not found');
+                res.render('staffdetails',{messs:'Staff not found'})
+            } else {
+                console.log(staff);
+                //res.send(staff)
+                //res.send('staffdetails', {st:`<h3>Name: ${staff.name}</h3><h3>Floor :${staff.floor}</h3><h3>Phone No: ${staff.phno}</h3>`})
+                res.render('stusearchstaff', {staff: staff})
+         
+            }
+        })  
+        .catch(err => {
+            console.log(err);
+            res.send('Error searching for student');
+        });
+}); 
 
 
 
