@@ -88,10 +88,24 @@ app.post('/login', async (req, res) => {
     }
 })
  
-app.get('/home', async(req, res) => {
-    
-    res.render('home', { check: req.session.check });
- }) 
+
+
+
+ app.get('/home', async (req, res) => {
+    try {
+      const student = await Collection1.findOne({ password: req.session.gv});
+      if (!student) {
+        res.render('home', { message: 'Staff not found' });
+      } else {
+        res.render('home', { student : student});
+        console.log(student.name)
+        
+      }
+    } catch (err) {
+      console.error(err);
+      res.render('home', { message: 'Error getting student data' });
+    }
+  });
 
 app.post('/stulogin', async (req, res) => {
     try{
