@@ -59,6 +59,44 @@ const stuDetailsSchema = new mongoose.Schema({
   }
 });
 
+const messSchema = new mongoose.Schema({
+    monday: {
+    breakfast: String,
+    lunch: String,
+    dinner: String
+  },
+  tuesday: {
+    breakfast: String,
+    lunch: String,
+    dinner: String
+  },
+  wednesday: {
+    breakfast: String,
+    lunch: String,
+    dinner: String
+  },
+  thursday: {
+    breakfast: String,
+    lunch: String,
+    dinner: String
+  },
+  friday: {
+    breakfast: String,
+    lunch: String,
+    dinner: String
+  },
+  saturday: {
+    breakfast: String,
+    lunch: String,
+    dinner: String
+  },
+  sunday: {
+    breakfast: String,
+    lunch: String,
+    dinner: String
+  }
+});
+
 
  
 
@@ -66,10 +104,12 @@ const stuDetailsSchema = new mongoose.Schema({
 
 const Collection1 = conn.model('Collection1', logInSchema);
 const Collection2 = conn.model('Collection2', stuDetailsSchema);
+const Collection3 = conn.model('Collection3', messSchema);
 
 
 
 module.exports = {
   Collection1,
-  Collection2
+  Collection2,
+  Collection3
 };

@@ -1,4 +1,4 @@
-/*const express = require("express")
+const express = require("express")
 const path = require("path")
 const app = express()
 const hbs = require("hbs")
@@ -15,8 +15,13 @@ app.use(express.urlencoded({ extended: false }))
 const tempelatePath = path.join(__dirname, '../tempelates')
 
 app.set('view engine', 'hbs')
-app.set('views', tempelatePath)*/
+app.set('views', tempelatePath)
 
+
+app.listen(4000, () => { 
+    console.log('port connected for app.js');
+})
+ 
 
 
 

@@ -246,7 +246,7 @@ app.post('/searchstaff', (req, res) => {
                 //res.send(staff)
                 //res.send('staffdetails', {st:`<h3>Name: ${staff.name}</h3><h3>Floor :${staff.floor}</h3><h3>Phone No: ${staff.phno}</h3>`})
                 res.render('staffdetails', {staff: staff})
-         
+          
             }
         })  
         .catch(err => {
@@ -254,7 +254,7 @@ app.post('/searchstaff', (req, res) => {
             res.send('Error searching for student');
         });
 }); 
-
+ 
 app.post('/stustaff', (req, res) => {
     const floor = req.body.floor;
      
