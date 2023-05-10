@@ -254,7 +254,7 @@ app.post('/searchstaff', (req, res) => {
             res.send('Error searching for student');
         });
 }); 
- 
+  
 app.post('/stustaff', (req, res) => {
     const floor = req.body.floor;
      
